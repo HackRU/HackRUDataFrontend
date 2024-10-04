@@ -4,6 +4,7 @@ import DataList from './Components/DataList';
 import GenderChart from './Components/GenderChart';
 import RegistrationStatusChart from './Components/RegistrationStatus';
 import RoleDistributionChart from './Components/RoleDistribution';
+import EthnicityChart from './Components/Ethnicity';
 
 function App() {
     return (
@@ -17,6 +18,9 @@ function App() {
                 </div>
                 <div>
                     <RoleDistributionChart />
+                </div>
+                <div>
+                    <EthnicityChart />
                 </div>
             </header>
         </div>
