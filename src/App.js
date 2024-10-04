@@ -5,6 +5,7 @@ import GenderChart from './Components/GenderChart';
 import RegistrationStatusChart from './Components/RegistrationStatus';
 import RoleDistributionChart from './Components/RoleDistribution';
 import EthnicityChart from './Components/Ethnicity';
+import AgeGroupChart from './Components/AgeGroup';
 
 function App() {
     return (
@@ -21,6 +22,9 @@ function App() {
                 </div>
                 <div>
                     <EthnicityChart />
+                </div>
+                <div>
+                    <AgeGroupChart />
                 </div>
             </header>
         </div>
