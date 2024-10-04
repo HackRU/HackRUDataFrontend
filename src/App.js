@@ -3,6 +3,7 @@ import './App.css';
 import DataList from './Components/DataList';
 import GenderChart from './Components/GenderChart';
 import RegistrationStatusChart from './Components/RegistrationStatus';
+import RoleDistributionChart from './Components/RoleDistribution';
 
 function App() {
     return (
@@ -13,6 +14,9 @@ function App() {
                 </div>
                 <div>
                     <RegistrationStatusChart />
+                </div>
+                <div>
+                    <RoleDistributionChart />
                 </div>
             </header>
         </div>
