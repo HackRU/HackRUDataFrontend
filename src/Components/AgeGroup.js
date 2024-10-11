@@ -1,24 +1,28 @@
 import React, { useState, useEffect } from 'react';
 import { BarChart, Bar, XAxis, YAxis, Tooltip, CartesianGrid, ResponsiveContainer, Legend } from 'recharts';
-import axios from 'axios';
+import fetchData from '../api';
 import dayjs from 'dayjs';
 
 const AgeGroupChart = () => {
     const [data, setData] = useState([]);
+    const [loading, setLoading] = useState(true);
+    const [error, setError] = useState(null);
 
     useEffect(() => {
-        const fetchData = async () => {
+        const getData = async () => {
             try {
-                const response = await axios.get(`${process.env.REACT_APP_API_URL}/data`);
-                setData(response.data);
-            } catch (error) {
-                console.error('Error fetching data:', error);
+                const result = await fetchData();
+                setData(result);
+            } catch (err) {
+                setError(err);
+            } finally {
+                setLoading(false);
             }
         };
-        fetchData();
+        getData();
     }, []);
 
-
+    // eslint-disable-next-line no-undef
     const getAge = (dob) => dayjs().diff(dayjs(dob), 'year');
     const getAgeGroup = (age) => {
         if (age < 18) return 'Under 18';
@@ -30,6 +34,8 @@ const AgeGroupChart = () => {
         return '65+';
     };
 
+    if (loading) return <div>Loading...</div>;
+    if (error) return <div>Error fetching data: {error.message}</div>;
 
     const ageGroupData = data.reduce((acc, item) => {
         const age = getAge(item.date_of_birth);
@@ -54,22 +60,14 @@ const AgeGroupChart = () => {
         <div className="flex flex-col items-center justify-center h-screen bg-gray-100 p-6">
             <h2 className="text-3xl font-bold mb-6 text-gray-800">Age Group Breakdown vs Registration Status</h2>
             <ResponsiveContainer width="80%" height={500}>
-                <BarChart
-                    data={chartData}
-                    margin={{ top: 20, right: 30, left: 20, bottom: 80 }}
-                >
+                <BarChart data={chartData} margin={{ top: 20, right: 30, left: 20, bottom: 80 }}>
                     <CartesianGrid strokeDasharray="3 3" />
-                    <XAxis 
-                        dataKey="ageGroup" 
-                        angle={-45} 
-                        textAnchor="end"
-                        height={80} 
-                    />
+                    <XAxis dataKey="ageGroup" angle={-45} textAnchor="end" height={80} />
                     <YAxis allowDecimals={false} />
                     <Tooltip />
                     <Legend verticalAlign="top" height={36} />
-                    <Bar dataKey="registered" stackId="a" fill="#4caf50" /> 
-                    <Bar dataKey="unregistered" stackId="a" fill="#f44336" /> 
+                    <Bar dataKey="registered" stackId="a" fill="#4caf50" />
+                    <Bar dataKey="unregistered" stackId="a" fill="#f44336" />
                 </BarChart>
             </ResponsiveContainer>
         </div>
