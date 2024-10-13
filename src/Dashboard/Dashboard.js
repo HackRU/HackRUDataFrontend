@@ -1,14 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import fetchData from '../api';
-import { SimpleGrid } from '@chakra-ui/react'
+import { SimpleGrid, Box, Text, Button } from '@chakra-ui/react';
 import GenderChart from '../Components/GenderChart';
 import EthnicityChart from '../Components/EthnicityChart';
 import RegistrationStatusChart from '../Components/RegistrationStatus';
 import RoleDistributionChart from '../Components/RoleDistribution';
 import AgeGroupChart from '../Components/AgeGroup';
 import TShirtSizeChart from '../Components/TShirtSizeChart';
-
-
 
 const Dashboard = () => {
     const [data, setData] = useState([]);
@@ -33,14 +31,54 @@ const Dashboard = () => {
     if (error) return <div>Error fetching data: {error.message}</div>;
 
     return (
-        <SimpleGrid columns={[1, 2, 2]} spacing={10}> {/* Arranging charts in a grid layout */}
-            <GenderChart data={data} />
-            <EthnicityChart data={data} />
-            <RegistrationStatusChart  data={data} />
-            <RoleDistributionChart data={data}/>
-            <AgeGroupChart data={data}/>
-            <TShirtSizeChart data={data}/>
-        </SimpleGrid>
+        <Box p={10} bg="#f7f9fc"> 
+            <Text fontSize="2xl" fontWeight="bold" mb={8} textAlign="center">
+                My Dashboard
+            </Text>
+            <SimpleGrid columns={[1, 2, 3]} spacing={8}>
+
+                <Box bg="white" p={6} borderRadius="md" shadow="md">
+                    <Text fontSize="lg" mb={4}>Gender Distribution</Text>
+                    <GenderChart data={data} />
+                    <Button size="sm" mt={4} colorScheme="blue">Edit report</Button>
+                </Box>
+
+
+                <Box bg="white" p={6} borderRadius="md" shadow="md">
+                    <Text fontSize="lg" mb={4}>Ethnicity Breakdown</Text>
+                    <EthnicityChart data={data} />
+                    <Button size="sm" mt={4} colorScheme="blue">Edit report</Button>
+                </Box>
+
+
+                <Box bg="white" p={6} borderRadius="md" shadow="md">
+                    <Text fontSize="lg" mb={4}>Registration Status Overview</Text>
+                    <RegistrationStatusChart data={data} />
+                    <Button size="sm" mt={4} colorScheme="blue">Edit report</Button>
+                </Box>
+
+
+                <Box bg="white" p={6} borderRadius="md" shadow="md">
+                    <Text fontSize="lg" mb={4}>Role Distribution</Text>
+                    <RoleDistributionChart data={data} />
+                    <Button size="sm" mt={4} colorScheme="blue">Edit report</Button>
+                </Box>
+
+
+                <Box bg="white" p={6} borderRadius="md" shadow="md">
+                    <Text fontSize="lg" mb={4}>Age Group Breakdown</Text>
+                    <AgeGroupChart data={data} />
+                    <Button size="sm" mt={4} colorScheme="blue">Edit report</Button>
+                </Box>
+
+
+                <Box bg="white" p={6} borderRadius="md" shadow="md">
+                    <Text fontSize="lg" mb={4}>T-Shirt Size Distribution</Text>
+                    <TShirtSizeChart data={data} />
+                    <Button size="sm" mt={4} colorScheme="blue">Edit report</Button>
+                </Box>
+            </SimpleGrid>
+        </Box>
     );
 };
 
