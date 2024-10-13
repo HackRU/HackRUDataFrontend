@@ -44,7 +44,7 @@ const RoleDistributionChart = () => {
     }));
 
     return (
-        <div className="flex flex-col items-center justify-center h-screen bg-gray-100 p-6">
+        <div className="flex flex-col items-center justify-center h-screen p-6">
             <h2 className="text-3xl font-bold mb-6 text-gray-800">Role Distribution vs Registration Status</h2>
             <ResponsiveContainer width="80%" height={500}>
                 <BarChart data={chartData} margin={{ top: 20, right: 30, left: 20, bottom: 60 }}>

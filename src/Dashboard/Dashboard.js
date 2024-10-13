@@ -3,6 +3,11 @@ import fetchData from '../api';
 import { SimpleGrid } from '@chakra-ui/react'
 import GenderChart from '../Components/GenderChart';
 import EthnicityChart from '../Components/EthnicityChart';
+import RegistrationStatusChart from '../Components/RegistrationStatus';
+import RoleDistributionChart from '../Components/RoleDistribution';
+import AgeGroupChart from '../Components/AgeGroup';
+import TShirtSizeChart from '../Components/TShirtSizeChart';
+
 
 
 const Dashboard = () => {
@@ -31,6 +36,10 @@ const Dashboard = () => {
         <SimpleGrid columns={[1, 2, 2]} spacing={10}> {/* Arranging charts in a grid layout */}
             <GenderChart data={data} />
             <EthnicityChart data={data} />
+            <RegistrationStatusChart  data={data} />
+            <RoleDistributionChart data={data}/>
+            <AgeGroupChart data={data}/>
+            <TShirtSizeChart data={data}/>
         </SimpleGrid>
     );
 };

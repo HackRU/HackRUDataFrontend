@@ -36,7 +36,7 @@ const RegistrationStatusChart = () => {
     ];
 
     return (
-        <div className="flex flex-col items-center justify-center h-screen bg-gray-100 p-6">
+        <div className="flex flex-col items-center justify-center h-screen p-6">
             <h2 className="text-3xl font-bold mb-6 text-gray-800">Registration Status Overview</h2>
             <ResponsiveContainer width="90%" height={500}>
                 <PieChart>
