@@ -31,47 +31,47 @@ const Dashboard = () => {
     if (error) return <div>Error fetching data: {error.message}</div>;
 
     return (
-        <Box p={10} bg="#f7f9fc"> 
+        <Box p={10} bg="#f7f9fc"> {/* White background */}
             <Text fontSize="2xl" fontWeight="bold" mb={8} textAlign="center">
                 My Dashboard
             </Text>
-            <SimpleGrid columns={[1, 2, 3]} spacing={8}>
-
+            <SimpleGrid columns={[1, 2, 2]} spacing={8}> {/* 2 columns for larger screens */}
+                {/* Gender Chart */}
                 <Box bg="white" p={6} borderRadius="md" shadow="md">
                     <Text fontSize="lg" mb={4}>Gender Distribution</Text>
                     <GenderChart data={data} />
                     <Button size="sm" mt={4} colorScheme="blue">Edit report</Button>
                 </Box>
 
-
+                {/* Ethnicity Chart */}
                 <Box bg="white" p={6} borderRadius="md" shadow="md">
                     <Text fontSize="lg" mb={4}>Ethnicity Breakdown</Text>
                     <EthnicityChart data={data} />
                     <Button size="sm" mt={4} colorScheme="blue">Edit report</Button>
                 </Box>
 
-
+                {/* Registration Status Chart */}
                 <Box bg="white" p={6} borderRadius="md" shadow="md">
                     <Text fontSize="lg" mb={4}>Registration Status Overview</Text>
                     <RegistrationStatusChart data={data} />
                     <Button size="sm" mt={4} colorScheme="blue">Edit report</Button>
                 </Box>
 
-
+                {/* Role Distribution Chart */}
                 <Box bg="white" p={6} borderRadius="md" shadow="md">
                     <Text fontSize="lg" mb={4}>Role Distribution</Text>
                     <RoleDistributionChart data={data} />
                     <Button size="sm" mt={4} colorScheme="blue">Edit report</Button>
                 </Box>
 
-
+                {/* Age Group Chart */}
                 <Box bg="white" p={6} borderRadius="md" shadow="md">
                     <Text fontSize="lg" mb={4}>Age Group Breakdown</Text>
                     <AgeGroupChart data={data} />
                     <Button size="sm" mt={4} colorScheme="blue">Edit report</Button>
                 </Box>
 
-
+                {/* T-Shirt Size Chart */}
                 <Box bg="white" p={6} borderRadius="md" shadow="md">
                     <Text fontSize="lg" mb={4}>T-Shirt Size Distribution</Text>
                     <TShirtSizeChart data={data} />
